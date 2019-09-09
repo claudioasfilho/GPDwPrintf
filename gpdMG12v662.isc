@@ -1,0 +1,134 @@
+#ISD afv6
+# Simplicity Studio version: 5.10.3.201908211500-1522
+
+# Application configuration
+stackId: com.silabs.sdk.stack.super
+stackRoot: /Users/clfilho/projects/Simplicity Studio 04-19/Simplicity Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v2.6
+appId: gpd
+frameworkRoot: protocol/zigbee/app/gpd
+architecture: efr32~family[M]~series[1]~device_configuration[2]~performance[P]~radio[332]~flash[1024K]~temp[G]~package[L]~pins[125]~!module+BRD4162A+gcc
+exactArchitectureToolchain: com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:7.2.1.20170904
+deviceName: gpdMG12v662
+sourceSampleAppId: green-power-device
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+
+# Plugin configuration
+appPlugin: apps=true
+appPlugin: coexistence=false
+appPlugin: coexistence-stub=true
+appPlugin: flash-data=false
+appPlugin: gpd-components=true
+appPlugin: gpd-hal=true
+appPlugin: gpd-mbedtls=true
+appPlugin: gpd-mbedtls-config=true
+appPlugin: gpd-startup=true
+appPlugin: psstore=true
+appPlugin: rail-library=true
+appPlugin: rail-library-mp=false
+
+# Setup configurations
+{setupId:additionalFiles
+}
+{setupId:boardHeader
+allowMissingHeader:false
+useHeaderInPlace:false
+EFR32MG1P132F256GM48=BOARD,efr32/brd4153a,,
+EFR32MG1P232F256GM48=BOARD,efr32/brd4151a,,
+EFR32MG1P233F256GM48=BOARD,efr32/brd4150a,,
+efr32~family[M]~series[1]~device_configuration[2]~performance[P]~radio[332]~flash[1024K]~temp[G]~package[L]~pins[125]~!module+BRD4162A+iar=USE_HARDWARE_CONFIGURATOR,,,
+efr32~family[M]~series[1]~device_configuration[2]~performance[P]~radio[332]~flash[1024K]~temp[G]~package[L]~pins[125]~!module+BRD4162A+gcc=USE_HARDWARE_CONFIGURATOR,,,
+}
+{setupId:bookkeeping
+}
+{setupId:bootloader
+efr32~series[2]~device_configuration[1]=null,
+efr32~series[1]~device_configuration[1]=null,
+efr32~series[1]~device_configuration[2]=null,
+efr32~series[1]~device_configuration[3]=null,
+efr32~series[1]~device_configuration[4]=null,
+}
+{setupId:callbackConfiguration
+emberGpdAfPluginMainCallback:false
+emberGpdAfPluginNvInitCallback:false
+emberGpdAfPluginNvSaveAndLoadCallback:false
+}
+{setupId:commandLineConfiguration
+on
+}
+{setupId:eventConfiguration
+}
+{setupId:genConfig
+}
+{setupId:halOptions
+}
+{setupId:hwConfig
+lastArchitectureId=efr32~family[M]~series[1]~device_configuration[2]~performance[P]~radio[332]~flash[1024K]~temp[G]~package[L]~pins[125]~!module+BRD4162A+gcc
+featureLevel=1
+active=true
+lastHwConfFileUsed=PATH(ISC_RELATIVE):brd4162a_efr32mg12p332f1024gl125.hwconf
+}
+{setupId:information
+\{key:description
+Green Power Device Application.
+This sample application demonestartes a Green power device with following capability that is pre-configured in plugin GPD App Configuration.
+
+Device = GPD On/Off Switch (Devive Id = 2)
+Application Id = 0 , 4 Byte Device Src Address.
+Fixed Location = True,
+Commissioning = Biddirectional with Key Request and Key Proteced
+Security Level = 3
+Security Key type used = OOB Individula (Ket Type 4)
+
+Commissioning green power device with the Z3LightCombo is as follows:
+1. Enter the Z3LightCombo into commissioning state by pressing the PB0 button on the light board.
+2. Then follow the series of button presses on the GPD board
+     Press the PB0 4 times leaving a time of more than 1 second in between, following series of commands will be sent for each press of the button
+     i.     Channel request: To find the channel of the zigbee network and use use that for commissioning requests
+     ii.     Commissioning command: Commissioning request
+     iii.     Commissioning command: To collect the commissioning reply
+     iv.     Commissioning command: To indicate the successful commissioning
+3. Then press the PB1 to see the Z3LightCombo toggle on/off.
+4. To decommission the the GPD and bring it to factory reset state press the PB0 fon the GPD or more than 10 seconds.
+\}
+}
+{setupId:macros
+-DMBEDTLS_CONFIG_FILE="gpd-mbedtls-config.h"
+-DGPD_APP_TIME_IN_QS_TO_ENTER_EM4=60
+-DGPD_APP_BUTTON_LONG_PRESS_TIME_IN_QS=40
+}
+{setupId:quizz
+}
+{setupId:serial
+em317=0,false,*,*,*,*,*
+em346=0,false,*,*,*,*,*
+em351=0,false,*,*,*,*,*
+em355=0,false,*,*,*,*,*
+em3555=0,false,*,*,*,*,*
+em357=0,false,*,*,*,*,*
+em357p2p=0,false,*,*,*,*,*
+em3581=0,false,*,*,*,*,*
+em3582=0,false,*,*,*,*,*
+em3585=0,false,*,*,*,*,*
+em3586=0,false,*,*,*,*,*
+em3587=0,false,*,*,*,*,*
+em3588=0,false,*,*,*,*,*
+em3591=0,false,*,*,*,*,*
+em3592=0,false,*,*,*,*,*
+em3595=0,false,*,*,*,*,*
+em3596=0,false,*,*,*,*,*
+em3597=0,false,*,*,*,*,*
+em3598=0,false,*,*,*,*,*
+sky66107=0,false,*,*,*,*,*
+simulation=0,false,*,*,*,*,*
+efr32=0,false,*,*,*,*,*
+useHwConfigurator=true
+}
+{setupId:template
+--version:2
+}
+
+# Plugin options
+pluginOption(efr32): EMBER_AF_PLUGIN_HAL_CONFIG_VCOM_ENABLE,0
+pluginOption(efr32): EMBER_AF_PLUGIN_HAL_CONFIG_VUART_ENABLE,1
