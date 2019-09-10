@@ -199,11 +199,6 @@
 
 
 // $[SERIAL]
-#if 0
-#ifndef HAL_VCOM_ENABLE
-#define HAL_VCOM_ENABLE                   (1)
-#endif
-#endif
 
 #define BSP_SERIAL_APP_PORT                           (HAL_SERIAL_PORT_USART0)
 #define BSP_SERIAL_APP_TX_PIN                         (0U)

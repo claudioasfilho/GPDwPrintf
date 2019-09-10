@@ -232,6 +232,7 @@ void emberGpdAfPluginMainCallback(EmberGpd_t * gpd)
   while (true) {
     if (buttonPressed) {
       if (buttonPin == BSP_BUTTON0_PIN) {
+    	  printf("Commissioning device\n\r");
         emberGpdAfPluginCommission(gpd);
       } else if (buttonPin == BSP_BUTTON1_PIN) {
         sendToggle(gpd);
@@ -244,6 +245,7 @@ void emberGpdAfPluginMainCallback(EmberGpd_t * gpd)
     if (button0LongPressTimerStartValue
         && expiredTime > GPD_APP_BUTTON_LONG_PRESS_TIME_IN_QS) {
       button0LongPressTimerStartValue = 0;
+      printf("Decommissioning device\n\r");
       emberGpdAfPluginDeCommission(gpd);
     }
 
@@ -254,5 +256,6 @@ void emberGpdAfPluginMainCallback(EmberGpd_t * gpd)
     gpdSleepWithTimer(enterEm4);
 #endif
 
+    gpdSleepWithTimer(0);
   }
 }
